@@ -36,7 +36,7 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
       document.getElementById("copyButton").style.display = "none";
     }
   });
-
+  
   document.getElementById("copyButton").addEventListener("click", function() {
     var resultText = document.getElementById("result");
     var range = document.createRange();
