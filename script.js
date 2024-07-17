@@ -45,7 +45,6 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
     window.getSelection().addRange(range);
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
-    alert("Copied to clipboard!");
   });
 
   var lastClickedButton = null;
