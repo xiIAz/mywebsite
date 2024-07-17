@@ -7,19 +7,20 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #F3F4F6;
+      background-color: #313338;
       margin: 0;
       padding: 20px;
     }
 
     .container {
   max-width: 550px;
+  position: relative; /* add this line */
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #232428;
   border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #232428;
+  box-shadow: 0 0 10px rgba(153, 153, 153, 0.253);
   text-align: left; /* Add this line */
   position: relative; 
 }
@@ -27,8 +28,18 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333333;
+  color: #aaaaac;
   text-align: left; /* Add this line */
+}
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px; /* adjust the width and height to your liking */
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px;
+  z-index: 1; /* add this line to ensure the logo is on top of other elements */
 }
     
 
@@ -44,8 +55,11 @@
       height: 150px;
       padding: 10px;
       font-size: 16px;
+      color: #ffffff;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      background-color: #313338;
+      border-color: #313338;
+   
       resize: none;
       margin-bottom: 10px;
     }
@@ -55,17 +69,20 @@
       padding: 12px;
       font-size: 16px;
       border-radius: 5px;
-      border: none;
+      border: 1px solid #4338CA;
       background-color: #4338CA;
       color: #ffffff;
       cursor: pointer;
     }
 
     .result {
-      margin-top: 20px;
+      margin-top: 50px;
       padding: 10px;
       border-radius: 5px;
-      background-color: #f9f9f9;
+      color: #ffffff;
+      background-color: #313338;
+      display:none;
+    
       white-space: pre-wrap;
       text-align: left;
     }
@@ -79,7 +96,7 @@
   font-size: 14px;
   border-radius: 5px;
   border: none;
-  background-color: #555555;
+  background-color: #4338CA;
   color: #ffffff;
   cursor: pointer;
   margin-bottom: 10px; 
@@ -89,7 +106,7 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #666666;
+  color: #8a8a8b;
 }
 
 .copyButton:hover {
@@ -109,29 +126,29 @@
   font-size: 14px;
   border-radius: 5px;
   border: none;
-  background-color: #16A34A;
+  background-color: #4338CA;
   color: #ffffff;
   cursor: pointer;
 }
 
 .searchButton:hover {
-  background-color: #16A34A;
+  background-color: #4338CA;
 }
-    .searchButton:hover {
-      background-color: #16A34A;
-    }
+   
+.madeBy {
+  margin-top: 15px; /* Move it up by 20px */
+  font-size: 13px;
+  color: #666666;
+  text-align: right;
+}
 
-    .madeBy {
-      margin-top: 20px;
-      text-align: right;
-      font-size: 12px;
-      color: #666666;
-    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <div>
+      <img src="C:\Users\x_xbo\Desktop\Arena Ar\html\photo\New Project (19).png" alt="Logo" class="logo">
       <div class="title">Arena Ar </div>
       <h2 class="small-title">Add ID Tags </h2>
       <form id="idForm">
@@ -143,26 +160,32 @@
       <div id="result" class="result"></div>
       <div id="buttonContainer" class="buttonsContainer"></div>
     </div>
-    <div class="madeBy">Made by IIR4</div>
+    <div class="madeBy">Made by IIR4 
+  </div>
   </div>
 
   <script>
-    document.getElementById("idForm").addEventListener("submit", function(event) {
+   document.getElementById("idForm").addEventListener("submit", function(event) {
   event.preventDefault();
   var ids = document.getElementById("idInput").value.split(/[\s,]+/);
   var result = "";
   for (var i = 0; i < ids.length; i++) {
-    if (ids[i].trim()!== "") {
+    if (ids[i].trim() !== "") {
       result += "<@" + ids[i].trim() + ">\n";
     }
   }
-  document.getElementById("result").textContent = result.trim();
+  if (result.trim() === "") {
+    document.getElementById("result").style.display = "none";
+  } else {
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").textContent = result.trim();
+  }
 
   var buttonsContainer = document.getElementById("buttonContainer");
   buttonsContainer.innerHTML = "";
-  if (ids.some(id => id.trim()!== "")) {
+  if (ids.some(id => id.trim() !== "")) {
     for (var i = 0; i < ids.length; i++) {
-      if (ids[i].trim()!== "") {
+      if (ids[i].trim() !== "") {
         var id = ids[i].trim();
         var button = document.createElement("button");
         button.textContent = "Search ID " + id;
@@ -175,17 +198,6 @@
   } else {
     document.getElementById("copyButton").style.display = "none"; 
   }
-});
-
-document.getElementById("copyButton").addEventListener("click", function() {
-  var resultText = document.getElementById("result");
-  var range = document.createRange();
-  range.selectNode(resultText);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-  document.execCommand("copy");
-  window.getSelection().removeAllRanges();
-  alert("Copied to clipboard!");
 });
 
 function searchOnLookupGuru(id) {
