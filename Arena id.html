@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add ID Tags</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F3F4F6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Add this line */
+  position: relative; 
+}
+    .title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333333;
+  text-align: left; /* Add this line */
+}
+    
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555555;
+      text-align: left;
+    }
+
+    textarea {
+      width: 95%;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      background-color: #4338CA;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    .copyButton {
+  display: none;
+  position: absolute;
+  top: 365px;
+  right: 20px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  background-color: #555555;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 10px; 
+}
+
+.small-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #666666;
+}
+
+.copyButton:hover {
+  background-color: #333333;
+}
+
+.buttonsContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.searchButton {
+  margin-bottom: 5px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  background-color: #16A34A;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #16A34A;
+}
+    .searchButton:hover {
+      background-color: #16A34A;
+    }
+
+    .madeBy {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <div class="title">Arena Ar </div>
+      <h2 class="small-title">Add ID Tags </h2>
+      <form id="idForm">
+        <label for="idInput">Enter IDs (separated by commas or spaces)</label>
+        <textarea id="idInput" placeholder="Enter the IDs"></textarea>
+        <input type="submit" value="Add Tags">
+        <button id="copyButton" class="copyButton">Copy Output</button>
+      </form>
+      <div id="result" class="result"></div>
+      <div id="buttonContainer" class="buttonsContainer"></div>
+    </div>
+    <div class="madeBy">Made by IIR4</div>
+  </div>
+
+  <script>
+    document.getElementById("idForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var ids = document.getElementById("idInput").value.split(/[\s,]+/);
+  var result = "";
+  for (var i = 0; i < ids.length; i++) {
+    if (ids[i].trim()!== "") {
+      result += "<@" + ids[i].trim() + ">\n";
+    }
+  }
+  document.getElementById("result").textContent = result.trim();
+
+  var buttonsContainer = document.getElementById("buttonContainer");
+  buttonsContainer.innerHTML = "";
+  if (ids.some(id => id.trim()!== "")) {
+    for (var i = 0; i < ids.length; i++) {
+      if (ids[i].trim()!== "") {
+        var id = ids[i].trim();
+        var button = document.createElement("button");
+        button.textContent = "Search ID " + id;
+        button.className = "searchButton";
+        button.addEventListener("click", searchOnLookupGuru.bind(null, id));
+        buttonsContainer.appendChild(button);
+      }
+    }
+    document.getElementById("copyButton").style.display = "inline-block"; 
+  } else {
+    document.getElementById("copyButton").style.display = "none"; 
+  }
+});
+
+document.getElementById("copyButton").addEventListener("click", function() {
+  var resultText = document.getElementById("result");
+  var range = document.createRange();
+  range.selectNode(resultText);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
+  alert("Copied to clipboard!");
+});
+
+function searchOnLookupGuru(id) {
+  var url = "https://lookup.guru/" + encodeURIComponent(id);
+  window.open(url, "_blank");
+}
+  </script>
+</body>
+</html>
