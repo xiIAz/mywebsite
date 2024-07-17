@@ -43,6 +43,13 @@
 }
     
 
+iframe {
+  border: none;
+  width: 100%;
+  height: 500px; /* adjust the height as needed */
+  overflow: hidden;
+}
+
     label {
       display: block;
       margin-bottom: 10px;
@@ -155,17 +162,17 @@
         <label for="idInput">Enter IDs (separated by commas or spaces)</label>
         <textarea id="idInput" placeholder="Enter the IDs"></textarea>
         <input type="submit" value="Add Tags">
-        <button id="copyButton" class="copyButton">Copy Output</button>
+        <button id="copyButton" class="copyButton">Copy</button>
       </form>
       <div id="result" class="result"></div>
       <div id="buttonContainer" class="buttonsContainer"></div>
     </div>
-    <div class="madeBy">Made by IIR4 
+    <div class="madeBy">Made by IIR4, iO
   </div>
   </div>
 
   <script>
-   document.getElementById("idForm").addEventListener("submit", function(event) {
+document.getElementById("idForm").addEventListener("submit", function(event) {
   event.preventDefault();
   var ids = document.getElementById("idInput").value.split(/[\s,]+/);
   var result = "";
@@ -190,19 +197,51 @@
         var button = document.createElement("button");
         button.textContent = "Search ID " + id;
         button.className = "searchButton";
-        button.addEventListener("click", searchOnLookupGuru.bind(null, id));
+        button.addEventListener("click", function(id) {
+          return function() {
+            searchOnLookupGuru(id);
+          };
+        }(id));
         buttonsContainer.appendChild(button);
       }
     }
-    document.getElementById("copyButton").style.display = "inline-block"; 
+    document.getElementById("copyButton").style.display = "inline-block";
   } else {
-    document.getElementById("copyButton").style.display = "none"; 
+    document.getElementById("copyButton").style.display = "none";
   }
 });
 
+var lastClickedButton = null;
+var iframes = {};
+
 function searchOnLookupGuru(id) {
-  var url = "https://lookup.guru/" + encodeURIComponent(id);
-  window.open(url, "_blank");
+  if (lastClickedButton === id) {
+    // Close the iframe if the same button is clicked again
+    var iframe = iframes[id];
+    if (iframe) {
+      iframe.remove();
+      delete iframes[id];
+      lastClickedButton = null;
+    }
+  } else {
+    // Create a new iframe if it's a different button
+    var url = "https://lookup.guru/" + encodeURIComponent(id);
+    var iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.frameBorder = "0";
+    iframe.width = "100%";
+    iframe.height = "500px"; // adjust the height as needed
+
+    // Remove any existing iframes
+    var existingIframes = document.getElementById("buttonContainer").querySelectorAll("iframe");
+    existingIframes.forEach(function(iframe) {
+      iframe.remove();
+    });
+
+    document.getElementById("buttonContainer").appendChild(iframe);
+    iframes[id] = iframe;
+    lastClickedButton = id;
+  }
 }
   </script>
 </body>
