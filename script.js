@@ -36,7 +36,7 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
       document.getElementById("copyButton").style.display = "none";
     }
   });
-  
+
   document.getElementById("copyButton").addEventListener("click", function() {
     var resultText = document.getElementById("result");
     var range = document.createRange();
@@ -45,9 +45,12 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
     window.getSelection().addRange(range);
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
-
+    
   });
 
+
+
+  
   var lastClickedButton = null;
   var iframes = {};
   
