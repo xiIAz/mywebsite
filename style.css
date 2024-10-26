@@ -1,0 +1,265 @@
+body {
+    font-family: 'Ubuntu';
+    background-color: #313338;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 550px;
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #232428;
+    border-radius: 5px;
+    background-color: #232428;
+    box-shadow: 0 0 10px rgba(153, 153, 153, 0.253); /* Updated shadow */
+    text-align: left;
+}
+
+  .title {
+font-size: 24px;
+font-weight: 800;
+margin-bottom: 20px;
+color: #aaaaac;
+text-align: left; /* Add this line */
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px; /* adjust the width and height to your liking */
+  height: 60px;
+  border-radius: 50%;
+  margin: 10px;
+  z-index: 1; /* add this line to ensure the logo is on top of other elements */
+  }
+
+/* Default styles (Dark Mode) */
+body {
+  background-color: #313338; /* Dark background */
+  color: #fff; /* Light text */
+}
+
+.container {
+  padding: 20px;
+}
+
+/* Light Mode Styles */
+.light-mode {
+  background-color: #fff; /* Light background */
+  color: #000; /* Dark text */
+}
+
+.light-mode .container {
+  background-color: #f0f0f0; /* Light container */
+}
+
+/* Default styles (Dark Mode) */
+textarea {
+  width: 95%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  color: #ffffff; /* Text color in dark mode */
+  border-radius: 5px;
+  background-color: #313338; /* Background color in dark mode */
+  border-color: #313338;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+/* Light Mode Styles */
+.light-mode textarea {
+  color: #000000; /* Text color in light mode */
+  background-color: #f0f0f0; /* Background color in light mode */
+  border-color: #cccccc; /* Border color in light mode */
+}
+
+.toggleButton {
+  width: 40px; /* Set width for circular button */
+  height: 40px; /* Set height for circular button */
+  padding: 0; /* Remove padding */
+  font-size: 20px; /* Adjust font size for the icon */
+  border-radius: 50%; /* Make it circular */
+  border: none; /* Remove border */
+  background-color: #4338CA; /* Background color */
+  color: #ffffff; /* White icon color */
+  cursor: pointer; /* Pointer cursor on hover */
+  position: absolute; /* Position it absolutely */
+  top: 10px; /* Position it 10px from the top */
+  left: 10px; /* Position it 10px from the left */
+  z-index: 2; /* Ensure it appears above other elements */
+  display: flex; /* Use flex to center the icon */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.toggleButton:hover {
+  background-color: #313338; /* Change background on hover */
+}
+
+.container {
+  position: relative; /* Ensure the button is positioned relative to the container */
+  padding-top: 60px; /* Add padding to the top to avoid overlap with the button */
+}
+
+.title {
+  margin-top: 10px; /* Add some space between the button and the title */
+}
+
+/* Light Mode Styles */
+.light-mode {
+  background-color: #ffffff; /* Light background */
+  color: #313338; /* Darker text color for better contrast */
+}
+
+.light-mode .container {
+  background-color: #f0f0f0; /* Light container */
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.253);
+}
+
+.light-mode textarea {
+  color: #000000; /* Text color in light mode (textarea) */
+  background-color: #e0e0e0; /* Background color in light mode (textarea) */
+  border: 1px solid #cccccc; /* Set a light border color for textarea */
+}
+
+.light-mode label {
+  color: #313338; /* Darker label color in light mode */
+}
+
+.light-mode .title {
+  color: #313338; /* Darker title color in light mode */
+}
+
+.light-mode .small-title {
+  color: #313338; /* Darker small title color in light mode */
+}
+
+.light-mode .madeBy {
+  color: #666666; /* Keep this color for madeBy text */
+}
+.light-mode .result {
+  background-color: #e0e0e0; /* Change this to your desired light mode color */
+  color: #000000; /* Change text color if needed */
+} 
+.light-mode .logo {
+  content: url('/photo/light_mode.png'); /* Change the image source for light mode */
+}
+
+.logo {
+  content: url('/photo/dark_mode.png');
+}
+
+/* Additional styles for buttons, etc. can be added here */
+
+iframe {
+border: none;
+width: 100%;
+height: 500px; /* adjust the height as needed */
+overflow: hidden;
+}
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #7a7a7a;
+    text-align: left;
+  }
+
+  textarea {
+    width: 95%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #313338;
+    border-color: #313338;
+ 
+    resize: none;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #4338CA;
+    background-color: #4338CA;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .result {
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #313338;
+    display:none;
+  
+    white-space: pre-wrap;
+    text-align: left;
+  }
+
+  .copyButton {
+    display: none;
+    position: absolute;
+    top: 414.5px; /* Increase this value to move it down */
+    left: 20px; /* Change from right to left */
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4338CA;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px; 
+}
+
+.small-title {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 10px;
+color: #a2a2a3;
+}
+
+.copyButton:hover {
+background-color: #313338;
+}
+
+.buttonsContainer {
+margin-top: 10px;
+display: flex;
+flex-direction: column;
+align-items: flex-start; 
+}
+
+.searchButton {
+margin-bottom: 5px;
+padding: 8px 20px;
+font-size: 14px;
+border-radius: 5px;
+border: none;
+background-color: #4338CA;
+color: #ffffff;
+cursor: pointer;
+}
+
+.searchButton:hover {
+background-color: #4338CA;
+}
+ 
+.madeBy {
+margin-top: 15px; /* Move it up by 20px */
+font-size: 13px;
+color: #666666b9;
+text-align: right;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add ID Tags</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+    <div>
+      <img src="\photo\dark_mode.png" alt="Logo" class="logo">
+      <img  src="\photo\light_mode.png" alt="Logo" class="logo"/>
+      <button id="toggleButton" class="toggleButton">
+        <i class="fas fa-moon" id="toggleIcon"></i> <!-- Default icon for dark mode -->
+    </button>
+      <div class="title">Arena Ar </div>
+      <h2 class="small-title">Add ID Tags </h2>
+      <form id="idForm">
+        <label for="idInput">Enter IDs (separated by commas or spaces)</label>
+        <textarea id="idInput" placeholder="Enter the IDs"></textarea>
+        <input type="submit" value="Add Tags">
+        <button id="copyButton" class="copyButton">Copy</button>
+      </form>
+      <div id="result" class="result"></div>
+      <div id="buttonContainer" class="buttonsContainer"></div>
+    </div>
+    <div class="madeBy">Made by IIR4, iO
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
