@@ -48,8 +48,24 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
     
   });
 
+  // script.js
 
-
+  const toggleButton = document.getElementById('toggleButton');
+  const toggleIcon = document.getElementById('toggleIcon');
+  
+  toggleButton.addEventListener('click', function() {
+      if (document.body.classList.contains('light-mode')) {
+          // Switch to dark mode
+          document.body.classList.remove('light-mode');
+          toggleIcon.classList.remove('fa-sun');
+          toggleIcon.classList.add('fa-moon');
+      } else {
+          // Switch to light mode
+          document.body.classList.add('light-mode');
+          toggleIcon.classList.remove('fa-moon');
+          toggleIcon.classList.add('fa-sun');
+      }
+  });
   
   var lastClickedButton = null;
   var iframes = {};
