@@ -149,11 +149,11 @@ textarea {
   color: #000000; /* Change text color if needed */
 } 
 .light-mode .logo {
-  content: url('/photo/light_mode.png'); /* Change the image source for light mode */
+  content: url('photo/light_mode.png'); /* Change the image source for light mode */
 }
 
 .logo {
-  content: url('/photo/dark_mode.png');
+  content: url('photo/dark_mode.png');
 }
 
 /* Additional styles for buttons, etc. can be added here */
