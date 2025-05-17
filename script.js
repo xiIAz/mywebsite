@@ -81,7 +81,7 @@ document.getElementById("idForm").addEventListener("submit", function(event) {
       }
     } else {
       // Create a new iframe if it's a different button
-      var url = "https://discord.name/" + encodeURIComponent(id);
+      var url = "https://discord.name/users/" + encodeURIComponent(id);
       var iframe = document.createElement("iframe");
       iframe.src = url;
       iframe.frameBorder = "0";
